@@ -17,6 +17,7 @@ namespace RuokaAppiBackend.Controllers
 
             return kaupassakavijat.ToList();
         }
+
         //Uuden kaupassakävijan lisäys
         [HttpPost]
         public ActionResult Post([FromBody] Kaupassakavijat kavija)

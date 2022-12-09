@@ -12,7 +12,6 @@ namespace RuokaAppiBackend.Models
 
         public int IdKavija { get; set; }
         public string Nimi { get; set; } = null!;
-        public string? Puhelin { get; set; }
         public DateTime? CreatedAt { get; set; }
         public bool Active { get; set; }
 

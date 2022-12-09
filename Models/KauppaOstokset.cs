@@ -13,11 +13,11 @@ namespace RuokaAppiBackend.Models
         public int IdKauppaOstos { get; set; }
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
-        public bool InProgress { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? LastModifiedAt { get; set; }
-        public bool Active { get; set; }    
-        public bool Completed { get; set; } 
+        public bool Active { get; set; }
+        public bool Inprogress { get; set; }
+        public bool Completed { get; set; }
 
         public virtual ICollection<Timesheet> Timesheets { get; set; }
     }

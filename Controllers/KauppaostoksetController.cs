@@ -50,12 +50,12 @@ namespace RuokaAppiBackend.Controllers
             if (op.OperationType == "start")
             {
 
-                if (ostos.InProgress == true || ostos.Completed == true)
+                if (ostos.Inprogress == true || ostos.Completed == true)
                 {
                     return (false);
                 }
 
-                ostos.InProgress = true;
+                ostos.Inprogress = true;
                 //ostos.WorkStartedAt = DateTime.Now.AddHours(2);
                 ostos.LastModifiedAt = DateTime.Now.AddHours(2);
 
@@ -86,12 +86,12 @@ namespace RuokaAppiBackend.Controllers
             else
             {
 
-                if (ostos.InProgress == false || ostos.Completed == true)
+                if (ostos.Inprogress == false || ostos.Completed == true)
                 {
                     return (false);
                 }
 
-                ostos.InProgress = false;
+                ostos.Inprogress = false;
                 //ostos.CompletedAt = DateTime.Now.AddHours(2);
                 ostos.Completed = true;
                 ostos.LastModifiedAt = DateTime.Now;

@@ -19,7 +19,6 @@ namespace RuokaAppiBackend.Controllers
                 {
                     IdKavija = kavija.IdKavija,
                     Nimi = kavija.Nimi,
-                    Puhelin = kavija.Puhelin,
                     Active = kavija.Active,
                     CreatedAt = DateTime.Now,
                 };
