@@ -22,7 +22,7 @@ namespace RuokaAppiBackend.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest("Error happened: " + e);
+                return BadRequest("Tapahtui virhe: " + e);
             }
         }
 
@@ -115,6 +115,74 @@ namespace RuokaAppiBackend.Controllers
 
         //Tähän kauppaostosten poisto ja muokkaus mahdollisuus
 
+        //MUOKKAUS
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult PutEdit(int id, [FromBody] KauppaostosData kauppaostos)
+        {
+            if (kauppaostos == null)
+            {
+                return BadRequest("Tuotetta ei löydy");
+            }
+            else
+            {
+                try
+                {
+                    var ostos = db.KauppaOstoksets.Find(id);
+
+                    if (ostos != null) //Jos kauppaostoksia on (ei ole null)
+                    {
+                        //Muokataan -> Korvataan tiedot uusilla tiedoilla
+                        ostos.Title = kauppaostos.Title;
+                        ostos.Description = kauppaostos.Description;
+                        ostos.Active = kauppaostos.Active;
+                        ostos.CreatedAt = kauppaostos.CreatedAt;
+                        ostos.Active = kauppaostos.Active;
+                        ostos.Inprogress = kauppaostos.Inprogress;
+                        ostos.Completed = kauppaostos.Completed;
+
+                        db.SaveChanges();
+                        return Ok("Muokattu onnistuneesti tuotetta: " + ostos.Title);
+                    }
+                    else
+                    {
+                        //Jos tuotetta ei löydy
+                        return NotFound("Muokattavaa tuotetta ei löytynyt.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    //Jokin menee pieleen
+                    return BadRequest("Jokin meni pieleen." + e.Message);
+                }
+            }
+        }
+
+        //POISTO
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var ostos = db.KauppaOstoksets.Find(id);
+            if (ostos == null)
+            {
+                return NotFound("Poistettavaa tuotetta ei löytynyt");
+            }
+
+            else
+            {
+                try
+                {
+                    db.KauppaOstoksets.Remove(ostos);
+                    db.SaveChanges();
+                    return Ok("Poistettiin onnistuneesti tuote: " + ostos.Title + " kauppalistalta.");
+                }
+                catch (Exception e)
+                {
+
+                    return BadRequest($"{e.Message}");
+                }
+            }
+        }
 
     }
 }
