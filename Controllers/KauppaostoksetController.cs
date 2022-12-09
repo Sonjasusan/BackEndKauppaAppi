@@ -142,7 +142,7 @@ namespace RuokaAppiBackend.Controllers
                         ostos.Completed = kauppaostos.Completed;
 
                         db.SaveChanges();
-                        return Ok("Muokattu onnistuneesti tuotetta: " + ostos.Title);
+                        return Ok("Muokattu onnistuneesti tuotetta: " + ostos.Title + " id:llä: "+ ostos.IdKauppaOstos);
                     }
                     else
                     {
