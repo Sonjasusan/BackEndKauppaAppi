@@ -23,13 +23,13 @@ namespace RuokaAppiBackend.Controllers
                     Active = kauppaostos.Active,
                     Title = kauppaostos.Title,
                     Description = kauppaostos.Description,
-                    InProgress = kauppaostos.InProgress,
+                    Inprogress = kauppaostos.Inprogress,
                     CreatedAt = DateTime.Now,
                     LastModifiedAt = DateTime.Now
                 };
 
-                db.KauppaOstoksets.Add(kauppaostokset);
-                db.SaveChanges();
+                db.KauppaOstoksets.Add(kauppaostokset); //lisätään
+                db.SaveChanges(); //tallennetaan
                 return (true);
 
             }
