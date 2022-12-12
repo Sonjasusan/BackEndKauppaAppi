@@ -28,8 +28,8 @@ namespace RuokaAppiBackend.Controllers
                     LastModifiedAt = DateTime.Now
                 };
 
-                db.KauppaOstoksets.Add(kauppaostokset);
-                db.SaveChanges();
+                db.KauppaOstoksets.Add(kauppaostokset); //lisätään
+                db.SaveChanges(); //tallennetaan
                 return (true);
 
             }

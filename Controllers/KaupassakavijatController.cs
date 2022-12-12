@@ -11,11 +11,11 @@ namespace RuokaAppiBackend.Controllers
         private readonly kauppalistadbContext db = new kauppalistadbContext();
 
         [HttpGet]
-        public List<Kaupassakavijat> GetAllActive()
+        public List<Kaupassakavijat> GetAllActive() //luodaan lista
         {
             var kaupassakavijat = db.Kaupassakavijats.Where(k => k.Active == true);//Haetaan kaikki aktiiviset kaupassakävijät
 
-            return kaupassakavijat.ToList();
+            return kaupassakavijat.ToList(); //palautetaan kaupassakävijät listana
         }
 
         //Uuden kaupassakävijan lisäys

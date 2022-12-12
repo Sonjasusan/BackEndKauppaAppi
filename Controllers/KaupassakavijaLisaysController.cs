@@ -5,16 +5,18 @@ namespace RuokaAppiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KaupassakavijaLisaysController : ControllerBase
+    public class KaupassakavijaLisaysController : ControllerBase //Toteutetaan lisäys omassa kontrollerissa
+                                                                 //Koska jostain syystä sei onnistunut kaupassakävijät puolella
     {
         private readonly kauppalistadbContext db = new kauppalistadbContext();
 
-        [HttpPost]
+
+        [HttpPost] //Kaupassakävijän lisäys 
         public bool Lisaa(Kaupassakavijat kavija)
         {
             try
             {
-
+                //Uuden kaupassakävijän lisäys
                 Kaupassakavijat kaupassakavija = new Kaupassakavijat()
                 {
                     IdKavija = kavija.IdKavija,
@@ -23,14 +25,13 @@ namespace RuokaAppiBackend.Controllers
                     CreatedAt = DateTime.Now,
                 };
 
-                db.Kaupassakavijats.Add(kavija);
-                db.SaveChanges();
+                db.Kaupassakavijats.Add(kavija); //lisätään tiedot
+                db.SaveChanges(); //tallennetaan
                 return (true);
 
             }
             catch (Exception)
             {
-
                 return (false);
                 
             }
