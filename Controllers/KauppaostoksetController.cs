@@ -73,7 +73,6 @@ namespace RuokaAppiBackend.Controllers
                     Comments = op.Comment,
                     StartLongitude = op.Longitude,
                     StartLatitude = op.Latitude,
-
                 };
 
                 db.Timesheets.Add(newEntry); //lisätään
@@ -190,6 +189,5 @@ namespace RuokaAppiBackend.Controllers
                 }
             }
         }
-
     }
 }
