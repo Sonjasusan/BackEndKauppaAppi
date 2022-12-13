@@ -8,8 +8,15 @@ namespace RuokaAppiBackend.Controllers
     public class KaupassakavijaLisaysController : ControllerBase //Toteutetaan lisäys omassa kontrollerissa
                                                                  //Koska jostain syystä sei onnistunut kaupassakävijät puolella
     {
+        //private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        //dependency injection
         private readonly kauppalistadbContext db = new kauppalistadbContext();
 
+        public KaupassakavijaLisaysController(kauppalistadbContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpPost] //Kaupassakävijän lisäys 
         public bool Lisaa(Kaupassakavijat kavija)
@@ -32,8 +39,7 @@ namespace RuokaAppiBackend.Controllers
             }
             catch (Exception)
             {
-                return (false);
-                
+                return (false);             
             }
         }
     }

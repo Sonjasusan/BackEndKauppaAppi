@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RuokaAppiBackend.Models;
+using System.Data.Common;
 using System.Text.Json.Serialization;
+
+
 
 namespace RuokaAppiBackend.Controllers
 {
@@ -9,7 +12,15 @@ namespace RuokaAppiBackend.Controllers
     [ApiController]
     public class KaupassakavijatController : ControllerBase
     {
+        //private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        //dependency injection
         private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        public KaupassakavijatController(kauppalistadbContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         public List<Kaupassakavijat> GetAllActive() //luodaan lista
@@ -19,21 +30,6 @@ namespace RuokaAppiBackend.Controllers
             return kaupassakavijat.ToList(); //palautetaan kaupassakävijät listana
         }
 
-        //Uuden kaupassakävijan lisäys
-        [HttpPost]
-        public ActionResult Post([FromBody] Kaupassakavijat kavija)
-        {
-            try
-            {
-                db.Kaupassakavijats.Add(kavija);
-                db.SaveChanges();
-                return Ok("Lisättiin kavija " + kavija.IdKavija);
-            }
-            catch (Exception e)
-            {
-                return BadRequest("Lisääminen ei onnistunut. Tässä lisätietoa: " + e);
-            }
-        }
         //Tähän kaupassakävijöiden poisto ja muokkaus mahdollisuus
 
         //MUOKKAUS
@@ -55,8 +51,8 @@ namespace RuokaAppiBackend.Controllers
                     {
                         //Muokataan - korvataan tiedot uusilla käyttäjän antamilla tiedoilla
                         kavija.Nimi = kaupassakavijat.Nimi;
-                        kavija.Active = kaupassakavijat.Active;
-                        kavija.CreatedAt = kaupassakavijat.CreatedAt;
+                        //kavija.Active = kaupassakavijat.Active;
+                        //kavija.CreatedAt = kaupassakavijat.CreatedAt;
 
                         db.SaveChanges(); //tallennetaan
                         return Ok("Muokattiin onnistuneesti kaupassakävijää: " + kavija.Nimi + " id:llä: " + kavija.IdKavija);
@@ -90,7 +86,7 @@ namespace RuokaAppiBackend.Controllers
                 {
                     db.Kaupassakavijats.Remove(kaupassakavija);
                     db.SaveChanges(); //tallenetaan
-                    return Ok("Poistettiin onnistuneesti tuote: " + kaupassakavija.Nimi + " .");
+                    return Ok("Poistettiin onnistuneesti kaupassakävijä: " + kaupassakavija.Nimi + " .");
 
                 }
                 catch (Exception e)
