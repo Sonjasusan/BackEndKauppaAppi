@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RuokaAppiBackend.Models;
+using System.Data.Common;
 using System.Text.Json.Serialization;
 
 
@@ -11,7 +12,15 @@ namespace RuokaAppiBackend.Controllers
     [ApiController]
     public class KaupassakavijatController : ControllerBase
     {
+        //private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        //dependency injection
         private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        public KaupassakavijatController(kauppalistadbContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpGet]
         public List<Kaupassakavijat> GetAllActive() //luodaan lista

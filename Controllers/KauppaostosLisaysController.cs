@@ -9,7 +9,15 @@ namespace RuokaAppiBackend.Controllers
     [ApiController]
     public class KauppaostosLisaysController : ControllerBase
     {
+        //private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        //dependency injection
         private readonly kauppalistadbContext db = new kauppalistadbContext();
+
+        public KauppaostosLisaysController(kauppalistadbContext dbparam)
+        {
+            db = dbparam;
+        }
 
         [HttpPost]
         public bool Lisaa(KauppaostosData kauppaostos) //Lisätään kauppaostos

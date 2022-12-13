@@ -7,8 +7,7 @@
       "secretStore": "LocalSecretsFile",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/srvsonjanyman/databases/kauppalistadb",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:azure",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:azure"
     }
   }
 }
