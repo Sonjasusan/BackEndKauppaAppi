@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 using RuokaAppiBackend.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -45,7 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+//Sallitaan kaik - k‰ytet‰‰n cors-m‰‰rityst‰
+app.UseCors("salliKaikki");
 app.MapControllers();
 
 app.Run();

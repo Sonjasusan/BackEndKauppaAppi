@@ -32,8 +32,7 @@ namespace RuokaAppiBackend.Controllers
             }
             catch (Exception)
             {
-                return (false);
-                
+                return (false);             
             }
         }
     }

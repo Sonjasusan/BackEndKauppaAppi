@@ -8,7 +8,7 @@ namespace RuokaAppiBackend.Controllers
 
     public class KauppaostoksetController : ControllerBase
     {
-        private kauppalistadbContext db = new kauppalistadbContext(); //alustetaan kanta "tyhjänä"
+        private readonly kauppalistadbContext db = new kauppalistadbContext();
 
         //Haetaan kaikki kauppaostokset taulussa olevat ostokset
         [HttpGet]
