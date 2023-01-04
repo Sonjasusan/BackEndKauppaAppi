@@ -29,10 +29,10 @@ namespace RuokaAppiBackend.Controllers
                     IdKavija = kavija.IdKavija,
                     Nimi = kavija.Nimi,
                     Active = kavija.Active,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now
                 };
 
-                db.Kaupassakavijats.Add(kavija); //lisätään tiedot
+                db.Kaupassakavijats.Add(kaupassakavija); //lisätään tiedot
                 db.SaveChanges(); //tallennetaan
                 return (true);
 

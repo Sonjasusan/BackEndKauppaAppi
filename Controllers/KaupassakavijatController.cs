@@ -72,6 +72,8 @@ namespace RuokaAppiBackend.Controllers
         }
         //POISTO
         [HttpDelete]
+        [Route("{id}")]
+
         public ActionResult Delete(int id)
         {
             var kaupassakavija = db.Kaupassakavijats.Find(id);//etsitään id:llä
