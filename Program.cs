@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
 // ------Connection string luetaan app settings.json tiedostosta--------------
 
 builder.Services.AddDbContext<kauppalistadbContext>(options => options.UseSqlServer(
-    builder.Configuration.GetConnectionString("azure")
+    builder.Configuration.GetConnectionString("paikallinen")
     ));
 
 //// ------------- tuodaan appSettings.jsoniin tekem‰mme AppSettings m‰‰ritys ------------

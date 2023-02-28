@@ -12,7 +12,7 @@ namespace RuokaAppiBackend.Controllers
         //private readonly kauppalistadbContext db = new kauppalistadbContext();
 
         //dependency injection
-        private readonly kauppalistadbContext db = new kauppalistadbContext();
+        private readonly kauppalistadbContext db;
 
         public KauppaostosLisaysController(kauppalistadbContext dbparam)
         {

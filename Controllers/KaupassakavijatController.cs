@@ -15,7 +15,7 @@ namespace RuokaAppiBackend.Controllers
         //private readonly kauppalistadbContext db = new kauppalistadbContext();
 
         //dependency injection
-        private readonly kauppalistadbContext db = new kauppalistadbContext();
+        private readonly kauppalistadbContext db;
 
         public KaupassakavijatController(kauppalistadbContext dbparam)
         {
@@ -51,8 +51,8 @@ namespace RuokaAppiBackend.Controllers
                     {
                         //Muokataan - korvataan tiedot uusilla käyttäjän antamilla tiedoilla
                         kavija.Nimi = kaupassakavijat.Nimi;
-                        //kavija.Active = kaupassakavijat.Active;
-                        //kavija.CreatedAt = kaupassakavijat.CreatedAt;
+                        kavija.Active = kaupassakavijat.Active;
+                        kavija.CreatedAt = kaupassakavijat.CreatedAt;
 
                         db.SaveChanges(); //tallennetaan
                         return Ok("Muokattiin onnistuneesti kaupassakävijää: " + kavija.Nimi + " id:llä: " + kavija.IdKavija);
